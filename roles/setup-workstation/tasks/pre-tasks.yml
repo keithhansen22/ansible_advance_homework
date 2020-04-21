@@ -1,9 +1,9 @@
-- name: yum clean
-  shell: yum clean all
-- name: install pip
-  yum:
-    name:
-      - python-pip
+- name: dnf clean
+  shell: dnf clean all
+#- name: install pip
+#  yum:
+#    name:
+#      - python-pip
 - name: Install openstacksdk library
   pip:
     name: openstacksdk
