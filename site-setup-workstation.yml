@@ -8,7 +8,6 @@
        group: workstation
        ansible_python_interpreter: /usr/bin/python3
 
-
 - hosts: workstation
   become: yes
   tasks:
@@ -21,4 +20,3 @@
     - setup-workstation
 
 - import_playbook: site-install-isolated-node.yml 
-
