@@ -1,0 +1,9 @@
+[frontends]
+frontend1.ce24.internal ansible_ssh_host=frontend1.ce24.example.opentlc.com
+
+[apps]
+app1.ce24.internal ansible_ssh_host=app1.ce24.example.opentlc.com
+app2.ce24.internal ansible_ssh_host=app2.ce24.example.opentlc.com
+
+[appdbs]
+appdb1.ce24.internal ansible_ssh_host=appdb1.ce24.example.opentlc.com
