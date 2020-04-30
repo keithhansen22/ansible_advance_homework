@@ -1,0 +1,5 @@
+---
+- name: OpenStack Lab Infrastructure Setup
+  hosts: workstation
+  roles:
+  - osp_instance

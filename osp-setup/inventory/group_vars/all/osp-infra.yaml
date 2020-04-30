@@ -1,0 +1,85 @@
+---
+osp_flavors:
+- name: m2.small
+  ram: 2048
+  vcpus: 1
+  disk: 10
+
+osp_images:
+- name: rhel-guest-image-7.2-20151102.0.x86_64
+  disk_format: qcow2
+  url: http://www.opentlc.com/download/osp_advanced_networking/rhel-guest-image-7.2-20151102.0.x86_64.qcow2
+
+osp_keypairs:
+- name: hw
+  path: "{{ ansible_ssh_private_key_file }}"
+
+osp_networks:
+# Private Network   
+- name: int_network
+  subnet_name: int_network
+  subnet_cidr: "20.20.20.0/24"
+
+# Public Facing Network   
+- name: ext_network
+  subnet_name: ext_network
+  subnet_cidr: "10.10.10.0/24"
+  external: true
+  routers:
+  - name: router
+    interfaces:
+    - int_network
+
+osp_security_groups:
+- name: apps
+  rules:
+  - port: 22
+  - port: 8080
+
+- name: appdbs
+  rules:
+  - port: 22
+  - port: 5432
+
+- name: frontends
+  rules:
+  - port: 22
+  - port: 80
+  - port: 443
+
+osp_instances:
+- name: app1
+  flavor: m2.small
+  image: rhel-guest-image-7.2-20151102.0.x86_64
+  meta: "group=apps,deployment_name=qa"
+  key_name: hw
+  network: int_network
+  floating_ip_network: ext_network
+  security_groups: apps
+
+- name: app2
+  flavor: m2.small
+  image: rhel-guest-image-7.2-20151102.0.x86_64
+  meta: "group=apps,deployment_name=qa"
+  key_name: hw
+  network: int_network
+  floating_ip_network: ext_network
+  security_groups: apps
+
+- name: db
+  flavor: m2.small
+  image: rhel-guest-image-7.2-20151102.0.x86_64
+  meta: "group=appdbs,deployment_name=qa"
+  key_name: hw
+  network: int_network
+  floating_ip_network: ext_network
+  security_groups: appdbs
+
+- name: frontend
+  flavor: m2.small
+  image: rhel-guest-image-7.2-20151102.0.x86_64
+  meta: "group=frontends,deployment_name=qa"
+  key_name: hw
+  network: int_network
+  floating_ip_network: ext_network
+  security_groups: frontends 

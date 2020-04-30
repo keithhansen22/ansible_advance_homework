@@ -1,6 +1,6 @@
 ==== Ansible Tower Config
 
-* Ran into an issue with Openstack network, router, port issues. Lost environment, so had to rebuild. Ended up creating new osp-setup directory to run clean config - as something in hw config kept creating this problem. 
+* Ran into an issue with Openstack network, router, port issues. Lost environment, so had to rebuild. Ended up creating new osp-setup directory to run clean config - as something in homework config kept creating a problem had to run a bunch of openstack cmds to resolve. 
 * From the cloned repo run `site-config-tower.yml` playbook to create job templates and workflow template.
 
 [source,text]

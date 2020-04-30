@@ -1,0 +1,37 @@
+---
+osp_instances:
+- name: app1
+  flavor: m2.small
+  image: rhel-guest-image-7.2-20151102.0.x86_64
+  meta: "group=apps,deployment_name=qa"
+  key_name: hw
+  network: int_network
+  floating_ip_network: ext_network
+  security_groups: apps
+
+- name: app2
+  flavor: m2.small
+  image: rhel-guest-image-7.2-20151102.0.x86_64
+  meta: "group=apps,deployment_name=qa"
+  key_name: hw
+  network: int_network
+  floating_ip_network: ext_network
+  security_groups: apps
+
+- name: db
+  flavor: m2.small
+  image: rhel-guest-image-7.2-20151102.0.x86_64
+  meta: "group=appdbs,deployment_name=qa"
+  key_name: hw
+  network: int_network
+  floating_ip_network: ext_network
+  security_groups: appdbs
+
+- name: frontend
+  flavor: m2.small
+  image: rhel-guest-image-7.2-20151102.0.x86_64
+  meta: "group=frontends,deployment_name=qa"
+  key_name: hw
+  network: int_network
+  floating_ip_network: ext_network
+  security_groups: frontends 
